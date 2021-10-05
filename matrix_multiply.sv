@@ -41,7 +41,8 @@ module matrix_multiply
 				localparam in_wire_count = MATRIX_SIZE*j;
 				mac_unit #(.data_size(DATA_SIZE)) mu_col (.in_a(in_a[j]), .in_b(col_wire[in_wire_count]), .out_a(row_wire[in_wire_count+1]), .out_b(col_wire[in_wire_count+MATRIX_SIZE]), .out_sum(out_matrix[in_wire_count]), .reset(reset), .clk(clk));
 			end
-		// now add the top left block
+
+                // now add the top left block
 		mac_unit #(.data_size(DATA_SIZE)) mu_top (.in_a(in_a[0]), .in_b(in_b[0]), .out_a(row_wire[1]), .out_b(col_wire[MATRIX_SIZE]), .out_sum(out_matrix[0]), .reset(reset), .clk(clk));
 	endgenerate
 
